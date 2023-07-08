@@ -10,27 +10,28 @@
 # **Ввод:** пара-ра-рам рам-пам-папам па-ра-па-да    
 #     **Вывод:** Парам пам-пам  
 
-text_input = 'пара-ра-рам рам-пам-папам па-ра-па-да'
+text_input = 'пар-ра-раам рам-пам-папам па-ра-па-да'
+test_list = "аеёиоуэюя"
 
 words = text_input.split()
 
 # Первый вариант
-# flag = True
-# temp = words[0].count('а')
-# for word in words:
-#     if word.count('а') != temp:
-#         flag = False
-#         break   
-# if flag:
-#     print('Парам пам-пам')
-# else:
-#     print('Пам парам')   
-
-# Второй вариант 
-
-res = list(map(lambda word: word.count('а'), words))
-
-if list(filter(lambda x: x == words[0].count('а'), res)) == res:
+temp = set()
+for word in words:
+    count = 0
+    for letter in word:
+        if letter in test_list:
+            count += 1
+    temp.add(count)
+if len(temp) == 1:
     print('Парам пам-пам')
 else:
-    print('Пам парам')
+    print('Пам парам')      
+
+# Второй вариант работает только с буквой А
+
+# res = set(map(lambda word: word.count('а'), words))
+# if  len(res) == 1:
+#     print('Парам пам-пам')
+# else:
+#     print('Пам парам')
